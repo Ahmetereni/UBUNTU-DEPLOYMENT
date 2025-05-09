@@ -15,11 +15,7 @@ sudo rm /etc/nginx/sites-available/*
 sudo mv default /etc/nginx/sites-available/
 sudo systemctl restart nginx.service
 
-#Setup Systemd
-printf "\n\033[1;34m[Step 4] Setup Systemd...\033[0m\n"
-sudo mv MyGunicornService.service /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl start MyGunicornService
+
 
 
 # Clone your repository
@@ -31,14 +27,17 @@ python3 -m venv .venv
 source .venv/bin/activate
 printf "\n\033[1;34m[Step 7] Requirements.txt...\033[0m\n"
 
-cd Innovative-Solutions  || echo "cd Innovative-Solutions errororororr  Errrooorrrrrr!!!!!!!!!!!!!"
-pip install -r requirements.txt
+pip install -r ./Innovative-Solutions/requirements.txt
 
 # Install Gunicorn
 printf "\n\033[1;34m[Step 8] Installing Gunicorn...\033[0m\n"
 pip install gunicorn
 
-
+#Setup Systemd
+printf "\n\033[1;34m[Step 4] Setup Systemd...\033[0m\n"
+sudo mv MyGunicornService.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl start MyGunicornService
 
 
 #gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
