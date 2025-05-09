@@ -9,32 +9,39 @@ printf "\n\033[1;34m[Step 2] Installing Python, pip, venv, and Git...\033[0m\n"
 sudo apt install -y python3-pip python3-venv git
 
 # Install Nginx
-printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
+printf "\n\033[1;34m[Step 3] Installing Nginx...\033[0m\n"
 sudo apt install -y nginx
 sudo rm /etc/nginx/sites-available/*
 sudo mv default /etc/nginx/sites-available/
 sudo systemctl restart nginx.service
+
+#Setup Systemd
+printf "\n\033[1;34m[Step 4] Setup Systemd...\033[0m\n"
+sudo mv MyGunicornService.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl start MyGunicornService
+
+
 # Clone your repository
-printf "\n\033[1;34m[Step 3] Cloning project repository...\033[0m\n"
+printf "\n\033[1;34m[Step 5] Cloning project repository...\033[0m\n"
 git clone https://github.com/Ahmetereni/Innovative-Solutions.git
 # Set up virtual environment and activate it
-printf "\n\033[1;34m[Step 4] Setting up virtual environment...\033[0m\n"
+printf "\n\033[1;34m[Step 6] Setting up virtual environment...\033[0m\n"
 python3 -m venv .venv
 source .venv/bin/activate
-printf "\n\033[1;34m[Step 4] Requirements.txt...\033[0m\n"
+printf "\n\033[1;34m[Step 7] Requirements.txt...\033[0m\n"
 
 cd Innovative-Solutions  || echo "cd Innovative-Solutions errororororr  Errrooorrrrrr!!!!!!!!!!!!!"
 pip install -r requirements.txt
 
 # Install Gunicorn
-printf "\n\033[1;34m[Step 5] Installing Gunicorn...\033[0m\n"
+printf "\n\033[1;34m[Step 8] Installing Gunicorn...\033[0m\n"
 pip install gunicorn
 
-# Systemd setup
-sudo mv MyGunicornService.service /etc/systemd/system
 
 
-gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
+
+#gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
 
 
 
