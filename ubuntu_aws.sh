@@ -19,6 +19,7 @@ printf "\n\033[1;34m[Step 4] Requirements.txt...\033[0m\n"
 
 cd Innovative-Solutions  || echo "cd Innovative-Solutions errororororr  Errrooorrrrrr!!!!!!!!!!!!!"
 pip install -r requirements.txt
+cd ..
 
 
 
