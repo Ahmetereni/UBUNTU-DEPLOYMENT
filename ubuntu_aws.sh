@@ -29,7 +29,9 @@ pip install gunicorn
 # Install Nginx
 printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
 sudo apt install -y nginx
+sudo mv default.conf /etc/nginx/sites-available/
 gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
+
 
 
 
@@ -45,7 +47,6 @@ printf "2. \033[1mRun Gunicorn manually:\033[0m\n"
 printf "   \033[0;36mgunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'\033[0m\n\n"
 
 printf "3. \033[1mSet up Gunicorn as a systemd service:\033[0m\n"
-# sudo mv default.conf /etc/nginx/sites-available/
 printf "   Run: \033[0;36msudo vim /etc/systemd/system/MyGunicornService.service\033[0m\n"
 printf "   Paste the appropriate service config (replace paths and user as needed)\n\n"
 
