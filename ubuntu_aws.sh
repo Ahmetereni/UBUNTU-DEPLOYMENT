@@ -34,7 +34,7 @@ printf "\n\033[1;34m[Step 8] Installing Gunicorn...\033[0m\n"
 pip install gunicorn
 
 #Setup Systemd
-printf "\n\033[1;34m[Step 4] Setup Systemd...\033[0m\n"
+printf "\n\033[1;34m[Step 9] Setup Systemd...\033[0m\n"
 sudo mv MyGunicornService.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl start MyGunicornService
