@@ -13,7 +13,7 @@ printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
 sudo apt install -y nginx
 sudo rm /etc/nginx/sites-available/*
 sudo mv default /etc/nginx/sites-available/
-
+sudo systemctl restart nginx.service
 # Clone your repository
 printf "\n\033[1;34m[Step 3] Cloning project repository...\033[0m\n"
 git clone https://github.com/Ahmetereni/Innovative-Solutions.git
