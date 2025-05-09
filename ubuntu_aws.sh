@@ -12,7 +12,7 @@ sudo apt install -y python3-pip python3-venv git
 printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
 sudo apt install -y nginx
 sudo rm /etc/nginx/sites-available/*
-sudo mv nginx-service /etc/nginx/sites-available/
+sudo mv nginx-configuration /etc/nginx/sites-available/
 sudo systemctl restart nginx.service
 # Clone your repository
 printf "\n\033[1;34m[Step 3] Cloning project repository...\033[0m\n"
