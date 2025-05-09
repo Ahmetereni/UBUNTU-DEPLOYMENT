@@ -30,6 +30,10 @@ pip install -r requirements.txt
 printf "\n\033[1;34m[Step 5] Installing Gunicorn...\033[0m\n"
 pip install gunicorn
 
+# Systemd setup
+sudo mv MyGunicornService.service /etc/systemd/system
+
+
 gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
 
 
