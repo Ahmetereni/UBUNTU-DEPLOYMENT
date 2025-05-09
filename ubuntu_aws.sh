@@ -8,6 +8,11 @@ sudo apt-get update && sudo apt-get upgrade -y
 printf "\n\033[1;34m[Step 2] Installing Python, pip, venv, and Git...\033[0m\n"
 sudo apt install -y python3-pip python3-venv git
 
+# Install Nginx
+printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
+sudo apt install -y nginx
+sudo mv default.conf /etc/nginx/sites-available/
+
 # Clone your repository
 printf "\n\033[1;34m[Step 3] Cloning project repository...\033[0m\n"
 git clone https://github.com/Ahmetereni/Innovative-Solutions.git
@@ -19,20 +24,12 @@ printf "\n\033[1;34m[Step 4] Requirements.txt...\033[0m\n"
 
 cd Innovative-Solutions  || echo "cd Innovative-Solutions errororororr  Errrooorrrrrr!!!!!!!!!!!!!"
 pip install -r requirements.txt
-cd ..
-
-
 
 # Install Gunicorn
 printf "\n\033[1;34m[Step 5] Installing Gunicorn...\033[0m\n"
 pip install gunicorn
 
-# Install Nginx
-printf "\n\033[1;34m[Step 6] Installing Nginx...\033[0m\n"
-sudo apt install -y nginx
-sudo mv default.conf /etc/nginx/sites-available/
 gunicorn -w 4 -b 0.0.0.0:5000 'application:create_app()'
-
 
 
 
